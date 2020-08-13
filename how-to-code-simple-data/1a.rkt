@@ -1,6 +1,7 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-reader.ss" "lang")((modname 1a) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname 1a) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+
 (+ 3 4)
 
 (+ 3 (* 2 3))
@@ -35,10 +36,6 @@
          (circle 20 "solid" "yellow")
          (circle 30 "solid" "green"))
 
-(define WIDTH 400)
-(define HEIGHT 600)
-
-
 (define (bulb c)
   (circle 40 "solid" c))
 
@@ -65,6 +62,8 @@
 I1
 I2
 
-(< (image-width I1)
-   (image-width I2))
+(if (< (image-width I1)
+      (image-width I2))
+    "I1 is wider"
+    "I2 is wider")
 
