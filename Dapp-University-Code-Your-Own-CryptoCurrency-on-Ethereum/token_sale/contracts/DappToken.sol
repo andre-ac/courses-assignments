@@ -7,6 +7,8 @@ contract DappToken{
         string public standard="Le Token v1.0";
         uint256 public totalSupply;
 
+        event Transfer(address indexed _from, address indexed _to, uint256 _value);
+
         mapping(address => uint256) public balanceOf;
 
         constructor (uint256 _initialSupply){
@@ -16,7 +18,13 @@ contract DappToken{
 
         function transfer(address _to, uint256 _value) public returns (bool success){
                 require(balanceOf[msg.sender] >= _value);
+                
+                balanceOf[msg.sender] -= _value;
+                balanceOf[_to] += _value;
 
+                emit Transfer(msg.sender, _to, _value);
+                
+                return true;
         }
 
 }
