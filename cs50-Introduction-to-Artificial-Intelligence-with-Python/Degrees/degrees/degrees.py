@@ -53,8 +53,12 @@ def load_data(directory):
 
 
 def main():
+
+    # If more than 1 arg is provided explain usage
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
+    
+    # if no arg is provided assumes it's the large dataset
     directory = sys.argv[1] if len(sys.argv) == 2 else "large"
 
     # Load data from files into memory
@@ -91,9 +95,33 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+    #return a list with (movie_id, person_id)
 
-    # TODO
-    raise NotImplementedError
+    trail = []
+    source_neighbor = neighbors_for_person(source)
+    target_neighbor = neighbors_for_person(target)
+    print(source_neighbor)
+    # check if target is in source neighbor
+
+    #loop all movies that source did
+    for i in source_neighbor:
+
+        #if they were in the same movie
+        if target in i:
+            trail.append((i))
+            print("HERE")
+            print(trail)
+            break
+        else:
+
+            
+            pass
+    
+
+    if len(trail) > 0:
+        return trail
+    else:
+        return None
 
 
 def person_id_for_name(name):
